@@ -1,9 +1,24 @@
+<template>
+  <div><button @click="toAdd" style="cursor:pointer">{{ count }}</button>
+    <p>{{ doubleCount }}</p>
+  </div>
+</template>
+
 <script setup>
-// import TheWelcome from '../components/TheWelcome.vue'
+import { useCounterStore } from '@/stores/counter'
+import { storeToRefs } from 'pinia'
+
+const counterStore = useCounterStore()
+let { count, doubleCount } = storeToRefs(counterStore)//保持响应式更新
+const toAdd = () => {
+  // counterStore.increment()
+  count.value++
+  // console.log(count.value, 'counterStore.count')
+  
+  // console.log(count.value, 'counterStore.count')
+  // console.log(counterStore.doubleCount, 'counterStore.doubleCount')
+}
 </script>
 
-<template>
-  <main>
-    <TheWelcome />
-  </main>
-</template>
+<style scoped>
+</style>
