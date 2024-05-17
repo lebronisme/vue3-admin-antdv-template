@@ -18,3 +18,4 @@ export default {
     }
 }
 //然后在main.js中注册
+ 
