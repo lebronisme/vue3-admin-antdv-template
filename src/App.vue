@@ -1,12 +1,10 @@
-<script setup>
-import zhCN from 'ant-design-vue/es/locale/zh_CN'//国际化
-import { RouterLink, RouterView } from 'vue-router'
-import HomeView from './views/HomeView.vue'
-// import { StepBackwardOutlined } from '@ant-design/icons-vue'
-</script>
-
 <template>
-  <HomeView></HomeView>
+  <HomeView>
+    <template v-slot:scope="scope">
+      <button @click='console.log(name)'>{{ name }}</button>
+      <button @click='console.log(scope.data.count)'>传入的数据</button>
+    </template>
+  </HomeView>
   <div>
     <a-button type="primary" v-checkPermission="['admin']" danger style="margin-right: 10px;">
       <StepBackwardOutlined></StepBackwardOutlined>admin 删除
@@ -18,6 +16,14 @@ import HomeView from './views/HomeView.vue'
     </a-button>
   </div>
 </template>
+
+<script setup>
+import zhCN from 'ant-design-vue/es/locale/zh_CN'//国际化
+import { RouterLink, RouterView } from 'vue-router'
+import HomeView from './views/HomeView.vue'
+const name = 'home'
+// import { StepBackwardOutlined } from '@ant-design/icons-vue'
+</script>
 
 <style scoped>
 </style>

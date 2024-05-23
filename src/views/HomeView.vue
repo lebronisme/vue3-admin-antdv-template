@@ -2,6 +2,7 @@
   <div><button @click="toAdd" style="cursor:pointer">{{ count }}</button>
     <p>{{ doubleCount }}</p>
   </div>
+  <slot name='scope' :data="counterStore"></slot>
 </template>
 
 <script setup>
@@ -14,7 +15,7 @@ const toAdd = () => {
   // counterStore.increment()
   count.value++
   // console.log(count.value, 'counterStore.count')
-  
+
   // console.log(count.value, 'counterStore.count')
   // console.log(counterStore.doubleCount, 'counterStore.doubleCount')
 }
